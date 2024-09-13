@@ -1,11 +1,39 @@
 const cupones = require("../models/Cupones");
+const empresa = require("../models/Empresa");
+const controladorCupones = {};
 
-const controladorCupones =  {}
 
-controladorCupones.crear =  async (  req, res) =>{
-    return   res.send({
-        msg:"error"
-    })
+controladorCupones.crear = async (req, res) => {
+
+    
+            const { totalCupones } = req.body;
+            const im  =  (req.file.path);
+            try {
+                let first = await cupones.create({
+                totalCupones,
+                ImageCupon: im,
+                });
+
+                return res.send({
+                msg: "se agrego el cupon",
+                });
+            } catch (error) {
+                console.log({ error: error.message });
+            }
+
+};
+
+controladorCupones.getall   =  async  ( req, res)=>{
+   
+    try {
+        
+        let primero =  await  empresa.findAll() 
+        return res.send(primero)
+    } catch (error) {
+
+        return res.send({error:error.message})
+        
+    }
 }
 
 

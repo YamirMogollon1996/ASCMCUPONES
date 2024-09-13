@@ -9,7 +9,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-
+require("./asociaiones/asociaones")
 
 // Importa los routers
 const authRoutes = require('./router/authRoutes');
@@ -44,7 +44,7 @@ const bootstrap = async () => {
   try {
     await db.authenticate();
     console.log("Inicio la base de datos");
-    await db.sync({ force: false });
+    await db.sync({ force: true });
     console.log("Tablas agregadas");
   } catch (error) {
     console.error("Error durante la sincronización o autenticación de la base de datos:", error);

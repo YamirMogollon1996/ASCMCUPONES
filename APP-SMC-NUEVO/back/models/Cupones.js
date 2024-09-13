@@ -6,7 +6,9 @@ const cupones = db.define("cupones" ,  {
 
        id:{
         type:DataTypes.INTEGER  , 
-        primaryKey:true
+        primaryKey:true  ,
+        allowNull:false , 
+        autoIncrement: true
        } ,
        totalCupones :  {
 
