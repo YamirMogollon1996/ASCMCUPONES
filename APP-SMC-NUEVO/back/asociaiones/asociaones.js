@@ -9,7 +9,7 @@ empresa.belongsTo(cliente, {
 });
 
 Personas.belongsTo(cliente, {
-  foreignKey: "id_persona",
+  foreignKey: "id_cliente",
 });  
 
 cliente.hasMany(cupones , {
