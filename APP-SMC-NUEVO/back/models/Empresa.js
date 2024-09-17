@@ -1,18 +1,15 @@
 const db = require("../coneccion/db");
 const{ DataTypes }  =  require("sequelize")
 
-const empresa  = db.define("empresa" ,{
 
+const empresa  = db.define("empresa" ,{
            id : {
             type:DataTypes.INTEGER , 
             allowNull:false , 
-            primaryKey: true
+            primaryKey: true  ,
+            autoIncrement  : true
            } , 
-           nombre :  {
-              type:DataTypes.STRING , 
-              allowNull:false  ,
-
-           }   ,
+     
            ruc :  {
                     type:DataTypes.STRING , 
               allowNull:false  ,

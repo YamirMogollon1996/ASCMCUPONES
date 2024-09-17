@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+
 const express = require('express');
 const db = require('./coneccion/db');
 const cors = require('cors');
@@ -15,6 +16,7 @@ require("./asociaiones/asociaones")
 const authRoutes = require('./router/authRoutes');
 const certRoutes = require('./router/certRoutes');
 const RouterCupones = require("./router/rutaCupones");
+const ClienteRouter = require("./router/cliente");
 
 // Asegúrate de que la carpeta 'uploads' exista
 const uploadsDir = path.join(__dirname, 'uploads');
@@ -29,7 +31,7 @@ app.use(express.json()); // Este middleware debe estar presente
 // Ruta estática para servir archivos subidos
 app.use('/uploads', express.static(uploadsDir));
 
-
+app.use(ClienteRouter);
 app.use(RouterCupones);
 // Usa los routers
 app.use('/api', authRoutes); // Añade prefijo '/api' a las rutas de autenticación
@@ -44,7 +46,7 @@ const bootstrap = async () => {
   try {
     await db.authenticate();
     console.log("Inicio la base de datos");
-    await db.sync({ force: true });
+    await db.sync({ force:   false });
     console.log("Tablas agregadas");
   } catch (error) {
     console.error("Error durante la sincronización o autenticación de la base de datos:", error);

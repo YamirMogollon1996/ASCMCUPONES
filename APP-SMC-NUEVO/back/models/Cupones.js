@@ -4,6 +4,7 @@ const {  DataTypes } = require("sequelize")
 
 const cupones = db.define("cupones" ,  {
 
+    
        id:{
         type:DataTypes.INTEGER  , 
         primaryKey:true  ,
@@ -17,6 +18,7 @@ const cupones = db.define("cupones" ,  {
        ImageCupon : {
         type:DataTypes.STRING
        }
+       
 
 
 },{

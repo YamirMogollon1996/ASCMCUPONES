@@ -7,9 +7,9 @@ function RegisterPerson() {
     nombre: '',
     apellido: '',
     dni: '',
-    telefono: '',
-    direccion: '',
-    ruc: ''
+    // telefono: '',
+    // direccion: '',
+    // ruc: ''
   });
 
   const navigate = useNavigate();
@@ -75,6 +75,8 @@ function RegisterPerson() {
             required
           />
         </div>
+
+{/*         
         <div className="mb-3">
           <label htmlFor="telefono" className="form-label">Teléfono</label>
           <input
@@ -99,7 +101,8 @@ function RegisterPerson() {
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3">   
+
           <label htmlFor="ruc" className="form-label">RUC (opcional)</label>
           <input
             type="text"
@@ -109,7 +112,10 @@ function RegisterPerson() {
             value={personData.ruc}
             onChange={handleChange}
           />
-        </div>
+        </div>   */}
+
+
+
         <div className="text-center">
           <button type="submit" className="btn btn-primary me-3">Registrar</button>
           <button type="button" className="btn btn-secondary" onClick={handleGoBack}>Regresar</button>
