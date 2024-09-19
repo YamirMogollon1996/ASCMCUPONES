@@ -69,6 +69,7 @@ ControaldorCliente.crear = async (req, res) => {
   }
 };
 
+
 ControaldorCliente.getallDecisison = async (req, res) => {
   try {
     let query = await db.query(GetallPersonasUnionCupones);
@@ -79,7 +80,6 @@ ControaldorCliente.getallDecisison = async (req, res) => {
         data: "vacio",
       });
     }
-
     return res.send({
       msg: "ok",
       data: query[0],
@@ -92,6 +92,7 @@ ControaldorCliente.getallDecisison = async (req, res) => {
 };
 
 ControaldorCliente.details = async (req, res) => {
+  
   const { id } = req.params;  
    try {
           const filOne =  await cliente.findOne({
@@ -125,8 +126,35 @@ ControaldorCliente.details = async (req, res) => {
     });
   }
 
-
-
 };
 
+
+ControaldorCliente.actualizar = async (  req, res  ) => {
+  
+  const { valorquemepasaFronte } = req.body;
+  
+
+    try {
+      
+      const { id ,  numero}  =  req.params   
+      //  const FindId = cliente
+         
+       const upadte = await cupones.update(
+         {
+           totalCupones: valorquemepasaFronte,
+         },
+         {
+           where: { id_cliente: id },
+         }
+       );
+      return res.send({
+        msg:"mogollon"  ,
+        reusltado : "se acatualico la consulta"
+      })
+    } catch (error) {
+        return res.send({
+          error:error.message
+        })
+    }
+};
 module.exports = ControaldorCliente;
